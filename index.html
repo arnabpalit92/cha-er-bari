@@ -200,33 +200,63 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100%;m
 .btn-done:active{transform:scale(.97)}
 .btn-cxl{background:var(--redl);color:var(--red);border:none;border-radius:var(--rs);padding:11px 14px;font-family:var(--f);font-size:13px;font-weight:700;cursor:pointer}
 
-/* ═══ STOCK CARD ═══ */
-.scard{background:var(--card);border-radius:var(--r);margin-bottom:10px;box-shadow:var(--sh);border:1.5px solid var(--bd);overflow:hidden}
-.scard-top{display:flex;align-items:center;padding:12px 14px 0;gap:10px}
-.scard-emo{font-size:28px;width:36px;text-align:center;flex-shrink:0}
-.scard-nm{font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.scard-sub{font-size:11px;color:var(--txf);font-weight:500;margin-top:1px}
-.sdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+/* ═══ STOCK CARD — Apple-inspired clean design ═══ */
+.scard{background:var(--card);border-radius:var(--r);margin-bottom:10px;box-shadow:var(--sh);border:1.5px solid var(--bd);overflow:hidden;transition:all .2s}
+.scard.expanded{box-shadow:var(--sh2)}
+
+/* Top row: emoji, name, stock ring, amount */
+.scard-main{display:flex;align-items:center;padding:14px 16px;gap:12px;cursor:pointer;-webkit-user-select:none;user-select:none}
+.scard-emo{font-size:32px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.scard-info{flex:1;min-width:0}
+.scard-nm{font-size:15px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2}
+.scard-cat{font-size:11px;color:var(--txf);font-weight:500;margin-top:1px}
+.scard-right{text-align:right;flex-shrink:0;display:flex;align-items:center;gap:10px}
+.scard-amt{font-size:20px;font-weight:900;font-family:var(--f2);line-height:1;letter-spacing:-.5px}
+.scard-amt.ok{color:var(--tx)}
+.scard-amt.low{color:var(--amber)}
+.scard-amt.out{color:var(--red)}
+
+/* Stock level pill — Apple battery-style indicator */
+.stock-pill{width:40px;height:18px;border-radius:5px;border:1.5px solid var(--bd);background:var(--bg);overflow:hidden;flex-shrink:0;position:relative}
+.stock-pill-fill{height:100%;border-radius:3px;transition:width .5s ease,background .3s}
+.stock-pill-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;font-family:var(--f2);color:var(--txs);mix-blend-mode:multiply}
+
+/* Warning strip */
+.scard-strip{padding:0 16px 10px;display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700}
+.scard-strip.low-strip{color:var(--amber)}
+.scard-strip.out-strip{color:var(--red)}
+
+/* Expandable actions panel */
+.scard-actions{display:none;border-top:1.5px solid var(--bd);padding:12px 16px;background:var(--card2);animation:slideDown .2s ease-out}
+.scard.expanded .scard-actions{display:block}
+@keyframes slideDown{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+
+/* Quick-adjust stepper */
+.stepper{display:flex;align-items:center;justify-content:center;gap:0;background:var(--bg);border-radius:12px;border:1.5px solid var(--bd);overflow:hidden;margin-bottom:10px}
+.stepper-btn{width:48px;height:44px;border:none;background:none;font-size:18px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--txs);transition:all .1s;font-family:var(--f)}
+.stepper-btn:active{background:var(--bd);transform:scale(.92)}
+.stepper-btn.minus{color:var(--red)}
+.stepper-btn.plus{color:var(--green)}
+.stepper-val{flex:1;text-align:center;font-size:18px;font-weight:900;font-family:var(--f2);padding:8px 0;border-left:1.5px solid var(--bd);border-right:1.5px solid var(--bd);line-height:1}
+.stepper-lbl{font-size:9px;color:var(--txf);font-weight:600;display:block;margin-top:1px}
+
+/* Action row for +Pack */
+.scard-pack-row{display:flex;gap:8px;align-items:center}
+.pack-btn{flex:1;padding:10px;border-radius:10px;border:1.5px solid var(--bd);background:var(--bg);font-family:var(--f);font-size:12px;font-weight:700;cursor:pointer;text-align:center;transition:all .1s;color:var(--txs)}
+.pack-btn:active{transform:scale(.97);background:var(--bd)}
+.pack-btn.add{background:var(--greenl);border-color:rgba(30,158,94,.2);color:var(--green)}
+.pack-btn.remove{background:var(--redl);border-color:rgba(212,59,59,.15);color:var(--red)}
+
+/* Detail chips */
+.scard-detail{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.detail-chip{font-size:10px;font-weight:600;color:var(--txf);background:var(--bg);border:1px solid var(--bd);border-radius:6px;padding:4px 8px}
+.detail-chip strong{color:var(--txs);font-weight:800}
+
+.sdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;display:none}
 .sdot.ok{background:var(--green);box-shadow:0 0 6px rgba(30,158,94,.4)}
 .sdot.low{background:var(--amber);box-shadow:0 0 6px rgba(230,156,10,.4)}
 .sdot.out{background:var(--red);animation:blink 1s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.scard-meters{padding:10px 14px 12px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.sm{background:var(--bg);border:1.5px solid var(--bd);border-radius:var(--rs);padding:10px}
-.sm-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--txf);margin-bottom:4px}
-.sm-row{display:flex;align-items:center;justify-content:space-between;gap:4px}
-.sm-val{font-size:20px;font-weight:900;font-family:var(--f2);line-height:1}
-.sm-unit{font-size:9px;color:var(--txf);font-weight:600;margin-top:2px}
-.sm-btns{display:flex;gap:3px;flex-shrink:0}
-.sb{height:28px;border-radius:7px;border:none;font-size:10px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 7px;white-space:nowrap;transition:transform .1s;font-family:var(--f)}
-.sb:active{transform:scale(.85)}
-.sb.m{background:var(--redl);color:var(--red)}
-.sb.p{background:var(--greenl);color:var(--green)}
-.sm-bar{height:3px;border-radius:2px;background:var(--bd);margin-top:6px;overflow:hidden}
-.sm-fill{height:100%;border-radius:2px;transition:width .4s}
-.scard-warn{margin:0 14px 10px;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700;display:flex;align-items:center;gap:5px}
-.scard-warn.ye{background:var(--amberl);color:#8a5e00}
-.scard-warn.rd{background:var(--redl);color:var(--red)}
 
 /* RESTOCK */
 .rcard{background:var(--card);border-radius:var(--r);margin-bottom:10px;padding:14px;box-shadow:var(--sh);border:1.5px solid var(--bd)}
@@ -726,9 +756,56 @@ function placeOrder(){const tbl=document.getElementById('tblSel').value;if(!tbl)
 function renderCatTabs(){const cats=['all',...new Set(raw.map(r=>r.cat))];document.getElementById('catTabs').innerHTML=cats.map(c=>`<button class="tab ${c===curCat?'active':''}" onclick="setCat(this,'${c}')">${c==='all'?'All':c} <span class="tc">${c==='all'?raw.length:raw.filter(r=>r.cat===c).length}</span></button>`).join('')}
 function setCat(btn,c){curCat=c;renderCatTabs();renderStock()}
 function renderStock(){const q=document.getElementById('srchIn').value.toLowerCase();const items=raw.filter(r=>(curCat==='all'||r.cat===curCat)&&(!q||r.name.toLowerCase().includes(q)||r.cat.toLowerCase().includes(q)));const out=raw.filter(r=>r.stock<=0),low=raw.filter(r=>status(r)==='low');let ah='';if(out.length)ah+=`<div class="alb red"><span style="font-size:20px">🚨</span><div><div class="alb-t">${out.length} Out of Stock</div><div class="alb-s">${out.map(r=>r.name).join(', ')}</div></div></div>`;if(low.length)ah+=`<div class="alb amber"><span style="font-size:20px">⚠️</span><div><div class="alb-t">${low.length} Running Low</div><div class="alb-s">${low.map(r=>r.name).join(', ')}</div></div></div>`;document.getElementById('alertsBox').innerHTML=ah;if(!items.length){document.getElementById('stockList').innerHTML=`<div class="empty"><div class="ei">🔍</div><div class="et">Nothing found</div></div>`;return}document.getElementById('stockList').innerHTML=items.map(r=>renderSC(r)).join('')}
-function renderSC(r){const st=status(r),du=dispUnit(r);const fullPacks=Math.floor(r.stock/r.packSize);const rem=r.stock%r.packSize;const remStr=rem>0?`+${f(rem)}${du} open`:'';const pct=r.lowAlert>0?Math.min(100,Math.round(r.stock/(r.lowAlert*4)*100)):Math.min(100,Math.round((r.stock/r.packSize)*100/3));const fc=st==='ok'?'var(--green)':st==='low'?'var(--amber)':'var(--red)';const warn=st==='low'?`<div class="scard-warn ye">⚠️ Low — only ${dispStock(r)} remaining</div>`:st==='out'?`<div class="scard-warn rd">🚨 OUT OF STOCK</div>`:'';return`<div class="scard"><div class="scard-top"><div class="scard-emo">${r.emoji}</div><div style="flex:1;min-width:0"><div class="scard-nm">${r.name}</div><div class="scard-sub">${r.cat} · ₹${r.costPerPack}/${dispPack(r)}</div></div><div class="sdot ${st}"></div></div><div class="scard-meters"><div class="sm"><div class="sm-lbl">${r.trackBy==='Piece'?'Pieces':r.trackBy==='ML'?'Volume':'Weight'}</div><div class="sm-row"><div><span class="sm-val">${f(r.stock)}</span><div class="sm-unit">${du}</div></div><div class="sm-btns"><button class="sb m" onclick="adjU('${r.id}',-1)">−1</button><button class="sb p" onclick="adjU('${r.id}',1)">+1</button></div></div><div class="sm-bar"><div class="sm-fill" style="width:${pct}%;background:${fc}"></div></div></div><div class="sm"><div class="sm-lbl">Packs</div><div class="sm-row"><div><span class="sm-val">${fullPacks}</span><div class="sm-unit">${remStr||dispPack(r)}</div></div><div class="sm-btns"><button class="sb m" onclick="adjPk('${r.id}',-1)">−pk</button><button class="sb p" onclick="adjPk('${r.id}',1)">+pk</button></div></div></div></div>${warn}</div>`}
-function adjU(id,d){const r=raw.find(x=>x.id===id);if(!r)return;r.stock=Math.max(0,r.stock+d);save();refresh();toast(`${d>0?'Added':'Removed'} 1${dispUnit(r)} of ${r.name}`,d>0?'green':'red')}
-function adjPk(id,d){const r=raw.find(x=>x.id===id);if(!r)return;const delta=d*r.packSize;r.stock=Math.max(0,r.stock+delta);save();refresh();toast(`${d>0?'Added':'Removed'} 1 pack of ${r.name}`,d>0?'green':'red')}
+function renderSC(r){
+  const st=status(r);
+  const pct=r.lowAlert>0?Math.min(100,Math.round(r.stock/(r.lowAlert*4)*100)):Math.min(100,Math.round((r.stock/r.packSize)*100/3));
+  const fc=st==='ok'?'var(--green)':st==='low'?'var(--amber)':'var(--red)';
+  const fullPacks=Math.floor(r.stock/r.packSize);
+  const rem=r.stock%r.packSize;
+
+  // Human-readable stock display
+  const heroStock=dispStock(r);
+
+  // Warning strip
+  let strip='';
+  if(st==='low') strip=`<div class="scard-strip low-strip">⚠️ Running low — reorder soon</div>`;
+  else if(st==='out') strip=`<div class="scard-strip out-strip">🚨 Out of stock</div>`;
+
+  return `<div class="scard" id="sc-${r.id}">
+    <div class="scard-main" onclick="toggleStock('${r.id}')">
+      <div class="scard-emo">${r.emoji}</div>
+      <div class="scard-info">
+        <div class="scard-nm">${r.name}</div>
+        <div class="scard-cat">${r.cat}</div>
+      </div>
+      <div class="stock-pill">
+        <div class="stock-pill-fill" style="width:${pct}%;background:${fc}"></div>
+      </div>
+      <div class="scard-amt ${st}">${heroStock}</div>
+    </div>
+    ${strip}
+    <div class="scard-actions">
+      <div class="stepper">
+        <button class="stepper-btn minus" onclick="event.stopPropagation();adjU('${r.id}',-1)">−</button>
+        <div class="stepper-val">${heroStock}<span class="stepper-lbl">current stock</span></div>
+        <button class="stepper-btn plus" onclick="event.stopPropagation();adjU('${r.id}',1)">+</button>
+      </div>
+      <div class="scard-pack-row">
+        <button class="pack-btn remove" onclick="event.stopPropagation();adjPk('${r.id}',-1)">− 1 Pack</button>
+        <button class="pack-btn add" onclick="event.stopPropagation();adjPk('${r.id}',1)">+ 1 Pack</button>
+      </div>
+      <div class="scard-detail">
+        <div class="detail-chip"><strong>${fullPacks}</strong> pack${fullPacks!==1?'s':''}${rem>0?' + '+f(rem)+dispUnit(r)+' open':''}</div>
+        <div class="detail-chip">₹${r.costPerPack} / ${dispPack(r)}</div>
+        <div class="detail-chip">Alert below ${f(r.lowAlert)}${dispUnit(r)}</div>
+      </div>
+    </div>
+  </div>`}
+
+function toggleStock(id){const el=document.getElementById('sc-'+id);if(el)el.classList.toggle('expanded')}
+
+function adjU(id,d){const r=raw.find(x=>x.id===id);if(!r)return;r.stock=Math.max(0,r.stock+d);save();refresh();toast(`${d>0?'+':''}${d>0?'1':'-1'}${dispUnit(r)} ${r.name}`,d>0?'green':'red')}
+function adjPk(id,d){const r=raw.find(x=>x.id===id);if(!r)return;const delta=d*r.packSize;r.stock=Math.max(0,r.stock+delta);save();refresh();toast(`${d>0?'+':'-'}1 pack ${r.name}`,d>0?'green':'red')}
 
 // RESTOCK
 function renderRestock(){const need=raw.filter(r=>status(r)!=='ok');const el=document.getElementById('restockList');if(!need.length){el.innerHTML=`<div class="empty"><div class="ei">✅</div><div class="et">All stocked up!</div></div>`;return}el.innerHTML=need.map(r=>`<div class="rcard"><div class="rcard-top"><div style="font-size:26px">${r.emoji}</div><div><div class="rcard-nm">${r.name}</div><div class="rcard-st" style="color:${status(r)==='out'?'var(--red)':'var(--amber)'}">${status(r)==='out'?'Out of stock':'Low: '+dispStock(r)+' left'}</div></div></div><div class="rcard-row"><input class="rcard-in" id="ri-${r.id}" type="number" min="1" placeholder="Packs"><div class="rcard-unit">${dispPack(r)}</div><button class="rcard-btn" onclick="doRestock('${r.id}')">+ Add</button></div></div>`).join('')}
