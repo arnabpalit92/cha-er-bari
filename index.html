@@ -90,6 +90,29 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100%;m
   display:flex; align-items:center; justify-content:center; color:var(--txf);
 }
 
+/* ═══ PAYMENT MODAL ═══ */
+/* Recipe line in menu item editor */
+.rcp-line{display:flex;gap:6px;align-items:center;margin-bottom:6px}
+.rcp-line select{flex:1;font-size:12px;padding:8px;border-radius:8px;border:1.5px solid var(--bd);background:var(--bg);font-family:var(--f);font-weight:600;color:var(--tx)}
+.rcp-line input{width:60px;font-size:12px;padding:8px;border-radius:8px;border:1.5px solid var(--bd);background:var(--bg);font-family:var(--f2);font-weight:700;text-align:center}
+.rcp-line .rcp-unit{font-size:10px;color:var(--txf);font-weight:600;width:24px}
+.rcp-line .rcp-del{width:28px;height:28px;border:none;background:var(--redl);color:var(--red);border-radius:6px;font-size:12px;cursor:pointer;flex-shrink:0}
+
+/* Menu item card in manage */
+.menu-mitem{background:var(--card);border-radius:var(--rs);margin-bottom:6px;padding:12px 14px;box-shadow:var(--sh);border:1.5px solid var(--bd);display:flex;align-items:center;gap:10px}
+.menu-mitem .mm-em{font-size:22px}
+.menu-mitem .mm-info{flex:1;min-width:0}
+.menu-mitem .mm-nm{font-size:13px;font-weight:700}
+.menu-mitem .mm-sub{font-size:10px;color:var(--txf);font-weight:500;margin-top:1px}
+.menu-mitem .mm-px{font-size:14px;font-weight:800;font-family:var(--f2);color:var(--copper)}
+
+
+.pay-method-btn{flex:1;background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:20px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:all .15s;font-family:var(--f)}
+.pay-method-btn:active{transform:scale(.96);border-color:var(--copper);background:var(--copperl)}
+.pay-m-label{font-size:13px;font-weight:700;color:var(--tx)}
+.quick-cash-btn{padding:8px 14px;border-radius:8px;border:1.5px solid var(--bd);background:var(--bg);font-family:var(--f2);font-size:13px;font-weight:700;color:var(--txs);cursor:pointer;transition:all .1s}
+.quick-cash-btn:active{background:var(--copperl);border-color:var(--copper);transform:scale(.95)}
+
 /* ═══ SYNC INDICATOR ═══ */
 .sync-bar{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;z-index:999;height:3px;background:transparent;pointer-events:none}
 .sync-bar.syncing{background:linear-gradient(90deg,transparent,var(--copper),transparent);animation:syncPulse 1.2s ease-in-out infinite}
@@ -171,7 +194,8 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100%;m
 .alb-t{font-size:12px;font-weight:800}.alb-s{font-size:10px;color:var(--txs);font-weight:500;margin-top:1px;line-height:1.3}
 
 /* ═══ TABLE GRID ═══ */
-.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 14px 0}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 14px 0}
+.tgrid-col{display:flex;flex-direction:column;gap:8px}
 .tcell{border-radius:var(--r);border:1.5px solid var(--bd);background:var(--card);padding:14px 8px;text-align:center;cursor:pointer;box-shadow:var(--sh);position:relative;transition:transform .1s,box-shadow .1s}
 .tcell:active{transform:scale(.97)}
 .tcell.occ{background:var(--copperl);border-color:var(--copper)}
@@ -181,6 +205,11 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100%;m
 .tcell.occ .tlbl{color:var(--copperd)}
 .tcell .tamt{font-size:10px;color:var(--txf);margin-top:3px;font-weight:500}
 .tcell.occ .tamt{color:var(--copper);font-weight:700}
+
+/* Parcel card — distinct from tables */
+.tcell-parcel{border-radius:var(--r);border:2px dashed var(--bd);background:var(--card2);padding:14px 16px;cursor:pointer;position:relative;transition:all .15s}
+.tcell-parcel:active{transform:scale(.98)}
+.tcell-parcel.occ{border-style:solid;border-color:var(--copper);background:linear-gradient(135deg,var(--copperl),#fff)}
 .tcell .tbdg{position:absolute;top:5px;right:5px;background:var(--copper);color:#fff;font-size:8px;font-weight:800;border-radius:6px;padding:2px 6px;letter-spacing:.5px}
 
 /* ORDER CARDS */
@@ -287,6 +316,52 @@ body{font-family:var(--f);background:var(--bg);color:var(--tx);min-height:100%;m
 .ecard-nm{flex:1;font-size:13px;font-weight:700}.ecard-sub{font-size:10px;color:var(--txf);font-weight:500;margin-top:1px}
 .ecard-amt{font-size:14px;font-weight:800;color:var(--red);font-family:var(--f2)}
 .ecard-del{background:var(--redl);border:none;border-radius:6px;padding:6px 8px;font-size:12px;cursor:pointer}
+
+/* ═══ ANALYTICS DASHBOARD ═══ */
+.an-filter{display:flex;gap:6px;padding:12px 14px 0;overflow-x:auto;scrollbar-width:none}
+.an-filter::-webkit-scrollbar{display:none}
+.an-fbtn{flex-shrink:0;padding:7px 14px;border-radius:20px;border:1.5px solid var(--bd);background:var(--card);font-family:var(--f);font-size:12px;font-weight:700;color:var(--txf);cursor:pointer;white-space:nowrap;transition:all .15s}
+.an-fbtn.active{background:var(--forest);border-color:var(--forest);color:#fff}
+
+.an-kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 14px 0}
+.kpi{background:var(--card);border-radius:var(--r);padding:14px;box-shadow:var(--sh);border:1.5px solid var(--bd);position:relative;overflow:hidden}
+.kpi-label{font-size:10px;font-weight:700;color:var(--txf);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.kpi-val{font-size:22px;font-weight:900;font-family:var(--f2);line-height:1;letter-spacing:-.5px}
+.kpi-sub{font-size:10px;font-weight:500;color:var(--txf);margin-top:3px}
+.kpi.wide{grid-column:1/-1}
+.kpi-icon{position:absolute;top:10px;right:12px;font-size:20px;opacity:.5}
+
+/* Bar chart rows */
+.bar-row{display:flex;align-items:center;gap:8px;padding:6px 0}
+.bar-row:not(:last-child){border-bottom:1px solid var(--bd)}
+.bar-rank{width:18px;font-size:11px;font-weight:800;color:var(--txf);text-align:center;flex-shrink:0}
+.bar-emoji{font-size:18px;flex-shrink:0}
+.bar-info{flex:1;min-width:0}
+.bar-name{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-stat{font-size:10px;color:var(--txf);font-weight:500;margin-top:1px}
+.bar-track{flex:0 0 80px;height:6px;background:var(--bg);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;transition:width .5s}
+.bar-val{font-size:13px;font-weight:800;font-family:var(--f2);flex-shrink:0;min-width:40px;text-align:right}
+
+/* Trend chart */
+.trend-chart{display:flex;align-items:flex-end;gap:3px;height:100px;padding:8px 0}
+.trend-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px}
+.trend-bar-wrap{width:100%;flex:1;display:flex;align-items:flex-end;gap:2px;justify-content:center}
+.trend-bar{flex:1;min-height:2px;border-radius:3px 3px 0 0;transition:height .4s}
+.trend-lbl{font-size:8px;font-weight:700;color:var(--txf);text-align:center;white-space:nowrap}
+.trend-val{font-size:8px;font-weight:800;font-family:var(--f2);color:var(--txs);text-align:center}
+.trend-legend{display:flex;gap:12px;justify-content:center;margin-top:8px}
+.trend-leg-item{display:flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:var(--txf)}
+.trend-leg-dot{width:8px;height:8px;border-radius:2px}
+
+/* Pair chips */
+.pair-chip{display:inline-flex;align-items:center;gap:4px;background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:6px 10px;margin:0 6px 6px 0;font-size:11px;font-weight:600}
+.pair-chip .pc-count{font-family:var(--f2);font-weight:800;color:var(--copper);margin-left:2px}
+
+/* Horizontal bar for payment */
+.hbar-wrap{height:28px;border-radius:8px;overflow:hidden;display:flex;margin:8px 0}
+.hbar-seg{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;transition:width .5s;min-width:0}
+.hbar-seg span{white-space:nowrap;overflow:hidden;text-overflow:clip}
 
 /* MANAGE */
 .mitem{background:var(--card);border-radius:var(--r);margin-bottom:9px;box-shadow:var(--sh);border:1.5px solid var(--bd)}
@@ -440,12 +515,28 @@ select.fc{-webkit-appearance:none;cursor:pointer}
 
 <!-- PAGE: ANALYTICS -->
 <div id="page-analytics" class="page">
-  <div class="sec" style="padding-top:14px">
-    <div class="acard" id="salesSum"></div>
-    <div class="acard" id="expenseSum"></div>
-    <div class="sec-ttl" style="margin-bottom:10px">Completed Orders</div>
+  <!-- Date Filter -->
+  <div class="an-filter" id="anFilter"></div>
+  <!-- KPI Cards -->
+  <div class="an-kpis" id="anKpis"></div>
+  <!-- Revenue vs Cost Trend -->
+  <div class="sec"><div class="acard" id="anTrend"></div></div>
+  <!-- Item Performance -->
+  <div class="sec"><div class="acard" id="anItems"></div></div>
+  <!-- Frequently Ordered Together -->
+  <div class="sec"><div class="acard" id="anPairs"></div></div>
+  <!-- Category Breakdown -->
+  <div class="sec"><div class="acard" id="anCats"></div></div>
+  <!-- Payment Split -->
+  <div class="sec"><div class="acard" id="anPay"></div></div>
+  <!-- Order History -->
+  <div class="sec">
+    <div class="sec-ttl" style="margin-bottom:10px">Recent Orders</div>
     <div id="salesList"></div>
-    <div class="sec-ttl" style="margin:14px 0 10px">Expenses</div>
+  </div>
+  <!-- Expenses -->
+  <div class="sec" style="padding-bottom:20px">
+    <div class="sec-ttl" style="margin-bottom:10px">Expenses</div>
     <div id="expensesList"></div>
   </div>
 </div>
@@ -508,6 +599,13 @@ select.fc{-webkit-appearance:none;cursor:pointer}
       </div>
     </div>
 
+    <!-- MENU ITEMS -->
+    <div class="sec-hd" style="margin-top:16px">
+      <span class="sec-ttl" id="menuTtl">Menu Items</span>
+      <button class="sec-btn" onclick="openAddMenu()">+ Add Item</button>
+    </div>
+    <div id="menuList"></div>
+
     <!-- RAW MATERIALS -->
     <div class="sec-hd" style="margin-top:16px">
       <span class="sec-ttl" id="manageTtl">Raw Materials</span>
@@ -551,7 +649,7 @@ select.fc{-webkit-appearance:none;cursor:pointer}
       <div id="cartItems"></div>
     </div>
     <div class="mfoot">
-      <select class="seltbl" id="tblSel"><option value="">Select Table…</option><option value="T1">Table 1</option><option value="T2">Table 2</option><option value="T3">Table 3</option><option value="T4">Table 4</option><option value="T5">Table 5</option><option value="T6">Table 6</option><option value="T7">Table 7</option><option value="T8">Table 8</option><option value="Parcel">📦 Parcel</option></select>
+      <select class="seltbl" id="tblSel"><option value="">Select Table…</option><option value="T1">Table 1</option><option value="T2">Table 2</option><option value="T3">Table 3</option><option value="T4">Table 4</option><option value="T5">Table 5</option><option value="T6">Table 6</option><option value="T7">Table 7</option><option value="Parcel">📦 Parcel</option></select>
       <button class="btnplace" onclick="placeOrder()">Place Order</button>
     </div>
   </div>
@@ -569,6 +667,27 @@ select.fc{-webkit-appearance:none;cursor:pointer}
     <div class="fr"><div><label>Current stock</label><input class="fc" id="fi-stock" type="number" min="0" placeholder="0"></div><div><label id="fi-pklbl">Pack size (gm)</label><input class="fc" id="fi-pack" type="number" min="1" placeholder="1000"></div></div>
     <div class="fr"><div><label>Low alert ≤</label><input class="fc" id="fi-low" type="number" min="0" placeholder="200"></div><div><label>Cost per pack (₹)</label><input class="fc" id="fi-cost" type="number" min="0" placeholder="0"></div></div>
     <div class="mffoot"><button class="btncncl" onclick="closeMo('moItem')">Cancel</button><button class="btnsave" onclick="saveItem()">Save</button></div>
+    <div style="height:10px"></div>
+  </div>
+</div>
+
+<!-- BULK USE MODAL -->
+
+<!-- ADD/EDIT MENU ITEM MODAL -->
+<div class="mo" id="moMenu" onclick="closeMo('moMenu',event)">
+  <div class="ms" onclick="event.stopPropagation()" style="overflow-y:auto;max-height:88vh">
+    <div class="mhandle"></div>
+    <div class="mtitle" id="moMenuTitle">🍽️ Add Menu Item</div>
+    <div class="fg"><label>Item Name *</label><input class="fc" id="mi-name" type="text" placeholder="e.g. Cold Coffee, Bread Pakora"></div>
+    <div class="fg"><label>Emoji</label><div class="eg" id="menuEmojiGrid"></div></div>
+    <div class="fr"><div><label>Price (₹) *</label><input class="fc" id="mi-price" type="number" min="1" placeholder="99"></div><div><label>Category</label><select class="fc" id="mi-cat"><option value="Beverages">☕ Beverages</option><option value="Breakfast">🍳 Breakfast</option><option value="Snacks">🍜 Snacks</option><option value="Frozen">❄️ Frozen</option><option value="Chicken">🍗 Chicken</option><option value="Fish">🐟 Fish</option><option value="Dessert">🍰 Dessert</option><option value="Drinks">🥤 Drinks</option><option value="Other">📦 Other</option></select></div></div>
+    <div class="fg">
+      <label>Recipe — Raw Materials Used (optional)</label>
+      <div style="font-size:10px;color:var(--txf);margin-bottom:6px">Link ingredients that get deducted from stock when this item is sold.</div>
+      <div id="mi-recipe-list"></div>
+      <button class="sec-btn" style="margin-top:6px;font-size:11px;padding:7px 12px" onclick="addRecipeLine()">+ Add Ingredient</button>
+    </div>
+    <div class="mffoot"><button class="btncncl" onclick="closeMo('moMenu')">Cancel</button><button class="btnsave" onclick="saveMenuItem()">Save</button></div>
     <div style="height:10px"></div>
   </div>
 </div>
@@ -596,6 +715,57 @@ select.fc{-webkit-appearance:none;cursor:pointer}
   </div>
 </div>
 
+<!-- ═══════════ PAYMENT MODAL ═══════════ -->
+<div class="mo" id="moPay" onclick="closeMo('moPay',event)">
+  <div class="ms" onclick="event.stopPropagation()" style="max-height:70vh">
+    <div class="mhandle"></div>
+    <div class="mtitle"><span id="moPayTitle">💳 Complete Order</span><button class="mclose" onclick="closeMo('moPay')">✕</button></div>
+    <div style="padding:16px">
+      <!-- Order summary -->
+      <div id="payOrderInfo" style="text-align:center;margin-bottom:16px">
+        <div style="font-size:11px;font-weight:700;color:var(--txf);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Total Amount</div>
+        <div id="payTotal" style="font-size:36px;font-weight:900;font-family:var(--f2);color:var(--tx);line-height:1">₹0</div>
+        <div id="payTableLabel" style="font-size:12px;color:var(--txf);font-weight:500;margin-top:4px"></div>
+      </div>
+
+      <!-- Payment method selection -->
+      <div id="payStep1">
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--txf);margin-bottom:10px">Payment Method</div>
+        <div style="display:flex;gap:10px">
+          <button class="pay-method-btn" onclick="selectPayMethod('online')">
+            <span style="font-size:28px">📱</span>
+            <span class="pay-m-label">Online / UPI</span>
+          </button>
+          <button class="pay-method-btn" onclick="selectPayMethod('cash')">
+            <span style="font-size:28px">💵</span>
+            <span class="pay-m-label">Cash</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cash input step -->
+      <div id="payStep2" style="display:none">
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--txf);margin-bottom:10px">Cash Received</div>
+        <input class="fc" id="cashReceived" type="number" inputmode="numeric" placeholder="Enter amount received" style="font-size:20px;text-align:center;font-weight:800;font-family:var(--f2);padding:14px;margin-bottom:12px" oninput="calcChange()">
+
+        <!-- Quick cash buttons -->
+        <div id="quickCashBtns" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px"></div>
+
+        <!-- Change display -->
+        <div id="changeBox" style="display:none;text-align:center;border-radius:12px;padding:16px;margin-bottom:12px">
+          <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px" id="changeLbl">Return Change</div>
+          <div id="changeAmt" style="font-size:32px;font-weight:900;font-family:var(--f2);line-height:1"></div>
+        </div>
+
+        <div style="display:flex;gap:8px">
+          <button class="btncncl" onclick="showPayStep1()" style="flex:0 0 auto">← Back</button>
+          <button id="cashCompleteBtn" class="btnsave" style="flex:1;background:var(--green);opacity:.4;pointer-events:none" onclick="completeCashOrder()">✓ Complete Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -604,7 +774,11 @@ select.fc{-webkit-appearance:none;cursor:pointer}
 // ═══════════════════════════════════════════════════════
 const DEFAULT_RAW=[{id:'r-tea-ctc',name:'Tea Leaf CTC',emoji:'🍵',cat:'Beverages',trackBy:'GM',stock:2000,packSize:1000,costPerPack:400,lowAlert:200},{id:'r-tea-flv',name:'Tea Leaf Flavour',emoji:'🍵',cat:'Beverages',trackBy:'GM',stock:1000,packSize:1000,costPerPack:700,lowAlert:200},{id:'r-coffee',name:'Coffee Powder',emoji:'☕',cat:'Beverages',trackBy:'GM',stock:400,packSize:200,costPerPack:600,lowAlert:60},{id:'r-milk',name:'Milk',emoji:'🥛',cat:'Beverages',trackBy:'ML',stock:2000,packSize:500,costPerPack:35,lowAlert:500},{id:'r-sugar',name:'Sugar',emoji:'🍬',cat:'Condiments',trackBy:'GM',stock:2000,packSize:1000,costPerPack:50,lowAlert:300},{id:'r-salt',name:'Salt',emoji:'🧂',cat:'Condiments',trackBy:'GM',stock:1000,packSize:1000,costPerPack:26,lowAlert:200},{id:'r-bpepper',name:'Black Pepper',emoji:'🌶️',cat:'Condiments',trackBy:'GM',stock:200,packSize:100,costPerPack:140,lowAlert:30},{id:'r-ketchup',name:'Tomato Ketchup',emoji:'🍅',cat:'Condiments',trackBy:'GM',stock:2000,packSize:1000,costPerPack:80,lowAlert:200},{id:'r-chaat',name:'Chaat Masala',emoji:'🧂',cat:'Condiments',trackBy:'GM',stock:200,packSize:100,costPerPack:50,lowAlert:40},{id:'r-oil',name:'Rice Bran Oil',emoji:'🫙',cat:'Condiments',trackBy:'ML',stock:2000,packSize:1000,costPerPack:140,lowAlert:300},{id:'r-egg',name:'Egg',emoji:'🥚',cat:'Eggs & Dairy',trackBy:'Piece',stock:24,packSize:12,costPerPack:80,lowAlert:6},{id:'r-butter',name:'Butter',emoji:'🧈',cat:'Eggs & Dairy',trackBy:'GM',stock:500,packSize:500,costPerPack:285,lowAlert:100},{id:'r-bread',name:'Bread',emoji:'🍞',cat:'Bread & Grains',trackBy:'Piece',stock:16,packSize:1,costPerPack:3,lowAlert:4},{id:'r-maggi',name:'Maggi Block',emoji:'🍜',cat:'Bread & Grains',trackBy:'Piece',stock:12,packSize:6,costPerPack:72,lowAlert:6},{id:'r-onion',name:'Onion',emoji:'🧅',cat:'Vegetables',trackBy:'GM',stock:2000,packSize:1000,costPerPack:40,lowAlert:300},{id:'r-garlic',name:'Garlic',emoji:'🧄',cat:'Vegetables',trackBy:'GM',stock:1000,packSize:1000,costPerPack:100,lowAlert:200},{id:'r-gchilli',name:'Green Chilli',emoji:'🌶️',cat:'Vegetables',trackBy:'GM',stock:500,packSize:1000,costPerPack:100,lowAlert:100},{id:'r-cucumb',name:'Cucumber',emoji:'🥒',cat:'Vegetables',trackBy:'GM',stock:1000,packSize:1000,costPerPack:60,lowAlert:200},{id:'r-fff',name:'French Fry Frozen',emoji:'🍟',cat:'Frozen',trackBy:'GM',stock:2500,packSize:2500,costPerPack:300,lowAlert:300},{id:'r-ppops',name:'Potato Pops Frozen',emoji:'🟡',cat:'Frozen',trackBy:'Piece',stock:100,packSize:100,costPerPack:380,lowAlert:20},{id:'r-atikki',name:'Aloo Tikki Frozen',emoji:'🫕',cat:'Frozen',trackBy:'Piece',stock:30,packSize:30,costPerPack:390,lowAlert:8},{id:'r-cfinger',name:'Chicken Finger Frozen',emoji:'🍗',cat:'Chicken',trackBy:'Piece',stock:33,packSize:33,costPerPack:340,lowAlert:8},{id:'r-cnugg',name:'Chicken Nuggets Frozen',emoji:'🍗',cat:'Chicken',trackBy:'Piece',stock:50,packSize:50,costPerPack:340,lowAlert:10},{id:'r-cpopcorn',name:'Chicken Popcorn Frozen',emoji:'🍗',cat:'Chicken',trackBy:'Piece',stock:100,packSize:100,costPerPack:330,lowAlert:20},{id:'r-ffinger',name:'Fish Finger Frozen',emoji:'🐟',cat:'Fish',trackBy:'Piece',stock:25,packSize:25,costPerPack:800,lowAlert:8},{id:'r-ffry',name:'Fish Fry Frozen',emoji:'🐟',cat:'Fish',trackBy:'Piece',stock:10,packSize:10,costPerPack:800,lowAlert:3}];
 
-const MENU=[{id:'m-milktea',name:'Milk Tea',emoji:'🍵',cat:'Beverages',price:15,recipe:[{id:'r-tea-ctc',qty:2.5,unit:'GM'},{id:'r-milk',qty:83,unit:'ML'},{id:'r-sugar',qty:2,unit:'GM'}]},{id:'m-djtea',name:'Darjeeling Tea',emoji:'🍵',cat:'Beverages',price:35,recipe:[{id:'r-tea-flv',qty:2,unit:'GM'},{id:'r-sugar',qty:2,unit:'GM'}]},{id:'m-coffee',name:'Coffee',emoji:'☕',cat:'Beverages',price:40,recipe:[{id:'r-coffee',qty:3,unit:'GM'},{id:'r-milk',qty:180,unit:'ML'}]},{id:'m-boilegg',name:'Boiled Egg',emoji:'🥚',cat:'Breakfast',price:15,recipe:[{id:'r-egg',qty:1,unit:'Piece'},{id:'r-salt',qty:0.5,unit:'GM'},{id:'r-bpepper',qty:0.5,unit:'GM'}]},{id:'m-poach1',name:'Poach (Single)',emoji:'🥚',cat:'Breakfast',price:25,recipe:[{id:'r-egg',qty:1,unit:'Piece'},{id:'r-oil',qty:10,unit:'ML'},{id:'r-salt',qty:0.5,unit:'GM'},{id:'r-bpepper',qty:0.5,unit:'GM'}]},{id:'m-poach2',name:'Poach (Double)',emoji:'🥚',cat:'Breakfast',price:49,recipe:[{id:'r-egg',qty:2,unit:'Piece'},{id:'r-oil',qty:10,unit:'ML'},{id:'r-salt',qty:0.5,unit:'GM'},{id:'r-bpepper',qty:0.5,unit:'GM'}]},{id:'m-oml1',name:'Omelette (Single)',emoji:'🍳',cat:'Breakfast',price:25,recipe:[{id:'r-egg',qty:1,unit:'Piece'},{id:'r-oil',qty:10,unit:'ML'},{id:'r-salt',qty:0.5,unit:'GM'},{id:'r-bpepper',qty:0.5,unit:'GM'}]},{id:'m-oml2',name:'Omelette (Double)',emoji:'🍳',cat:'Breakfast',price:49,recipe:[{id:'r-egg',qty:2,unit:'Piece'},{id:'r-oil',qty:10,unit:'ML'},{id:'r-salt',qty:0.5,unit:'GM'},{id:'r-bpepper',qty:0.5,unit:'GM'}]},{id:'m-btoast',name:'Butter Toast',emoji:'🍞',cat:'Breakfast',price:25,recipe:[{id:'r-bread',qty:2,unit:'Piece'},{id:'r-butter',qty:7,unit:'GM'},{id:'r-bpepper',qty:1,unit:'GM'},{id:'r-sugar',qty:1,unit:'GM'}]},{id:'m-maggi',name:'Maggi (Plain)',emoji:'🍜',cat:'Snacks',price:49,recipe:[{id:'r-maggi',qty:1,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-garlic',qty:5,unit:'GM'},{id:'r-gchilli',qty:2,unit:'GM'},{id:'r-butter',qty:5,unit:'GM'},{id:'r-ketchup',qty:5,unit:'GM'}]},{id:'m-maggiegg',name:'Maggi (Egg)',emoji:'🍜',cat:'Snacks',price:65,recipe:[{id:'r-maggi',qty:1,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-garlic',qty:5,unit:'GM'},{id:'r-gchilli',qty:2,unit:'GM'},{id:'r-butter',qty:5,unit:'GM'},{id:'r-ketchup',qty:5,unit:'GM'},{id:'r-egg',qty:1,unit:'Piece'},{id:'r-oil',qty:10,unit:'ML'}]},{id:'m-fff',name:'French Fry',emoji:'🍟',cat:'Frozen',price:89,recipe:[{id:'r-fff',qty:150,unit:'GM'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-ppops',name:'Potato Pops',emoji:'🟡',cat:'Frozen',price:89,recipe:[{id:'r-ppops',qty:10,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-atikki',name:'Aloo Tikki',emoji:'🫕',cat:'Frozen',price:89,recipe:[{id:'r-atikki',qty:4,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-cfinger',name:'Chicken Finger',emoji:'🍗',cat:'Chicken',price:99,recipe:[{id:'r-cfinger',qty:4,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-cnuggets',name:'Chicken Nuggets',emoji:'🍗',cat:'Chicken',price:99,recipe:[{id:'r-cnugg',qty:5,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-cpopcorn',name:'Chicken Popcorn',emoji:'🍗',cat:'Chicken',price:99,recipe:[{id:'r-cpopcorn',qty:10,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-ffinger',name:'Fish Finger',emoji:'🐟',cat:'Fish',price:159,recipe:[{id:'r-ffinger',qty:4,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-ffry',name:'Fish Fry',emoji:'🐟',cat:'Fish',price:149,recipe:[{id:'r-ffry',qty:1,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]}];
+const DEFAULT_MENU=[{id:'m-milktea',name:'Milk Tea',emoji:'🍵',cat:'Beverages',price:15,recipe:[{id:'r-tea-ctc',qty:2.5,unit:'GM'},{id:'r-milk',qty:83,unit:'ML'},{id:'r-sugar',qty:2,unit:'GM'}]},{id:'m-djtea',name:'Darjeeling Tea',emoji:'🍵',cat:'Beverages',price:35,recipe:[{id:'r-tea-flv',qty:2,unit:'GM'},{id:'r-sugar',qty:2,unit:'GM'}]},{id:'m-coffee',name:'Coffee',emoji:'☕',cat:'Beverages',price:40,recipe:[{id:'r-coffee',qty:3,unit:'GM'},{id:'r-milk',qty:180,unit:'ML'}]},{id:'m-boilegg',name:'Boiled Egg',emoji:'🥚',cat:'Breakfast',price:15,recipe:[{id:'r-egg',qty:1,unit:'Piece'},{id:'r-salt',qty:0.5,unit:'GM'},{id:'r-bpepper',qty:0.5,unit:'GM'}]},{id:'m-poach1',name:'Poach (Single)',emoji:'🥚',cat:'Breakfast',price:25,recipe:[{id:'r-egg',qty:1,unit:'Piece'},{id:'r-oil',qty:10,unit:'ML'},{id:'r-salt',qty:0.5,unit:'GM'},{id:'r-bpepper',qty:0.5,unit:'GM'}]},{id:'m-poach2',name:'Poach (Double)',emoji:'🥚',cat:'Breakfast',price:49,recipe:[{id:'r-egg',qty:2,unit:'Piece'},{id:'r-oil',qty:10,unit:'ML'},{id:'r-salt',qty:0.5,unit:'GM'},{id:'r-bpepper',qty:0.5,unit:'GM'}]},{id:'m-oml1',name:'Omelette (Single)',emoji:'🍳',cat:'Breakfast',price:25,recipe:[{id:'r-egg',qty:1,unit:'Piece'},{id:'r-oil',qty:10,unit:'ML'},{id:'r-salt',qty:0.5,unit:'GM'},{id:'r-bpepper',qty:0.5,unit:'GM'}]},{id:'m-oml2',name:'Omelette (Double)',emoji:'🍳',cat:'Breakfast',price:49,recipe:[{id:'r-egg',qty:2,unit:'Piece'},{id:'r-oil',qty:10,unit:'ML'},{id:'r-salt',qty:0.5,unit:'GM'},{id:'r-bpepper',qty:0.5,unit:'GM'}]},{id:'m-btoast',name:'Butter Toast',emoji:'🍞',cat:'Breakfast',price:25,recipe:[{id:'r-bread',qty:2,unit:'Piece'},{id:'r-butter',qty:7,unit:'GM'},{id:'r-bpepper',qty:1,unit:'GM'},{id:'r-sugar',qty:1,unit:'GM'}]},{id:'m-maggi',name:'Maggi (Plain)',emoji:'🍜',cat:'Snacks',price:49,recipe:[{id:'r-maggi',qty:1,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-garlic',qty:5,unit:'GM'},{id:'r-gchilli',qty:2,unit:'GM'},{id:'r-butter',qty:5,unit:'GM'},{id:'r-ketchup',qty:5,unit:'GM'}]},{id:'m-maggiegg',name:'Maggi (Egg)',emoji:'🍜',cat:'Snacks',price:65,recipe:[{id:'r-maggi',qty:1,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-garlic',qty:5,unit:'GM'},{id:'r-gchilli',qty:2,unit:'GM'},{id:'r-butter',qty:5,unit:'GM'},{id:'r-ketchup',qty:5,unit:'GM'},{id:'r-egg',qty:1,unit:'Piece'},{id:'r-oil',qty:10,unit:'ML'}]},{id:'m-fff',name:'French Fry',emoji:'🍟',cat:'Frozen',price:89,recipe:[{id:'r-fff',qty:150,unit:'GM'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-ppops',name:'Potato Pops',emoji:'🟡',cat:'Frozen',price:89,recipe:[{id:'r-ppops',qty:10,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-atikki',name:'Aloo Tikki',emoji:'🫕',cat:'Frozen',price:89,recipe:[{id:'r-atikki',qty:4,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-cfinger',name:'Chicken Finger',emoji:'🍗',cat:'Chicken',price:99,recipe:[{id:'r-cfinger',qty:4,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-cnuggets',name:'Chicken Nuggets',emoji:'🍗',cat:'Chicken',price:99,recipe:[{id:'r-cnugg',qty:5,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-cpopcorn',name:'Chicken Popcorn',emoji:'🍗',cat:'Chicken',price:99,recipe:[{id:'r-cpopcorn',qty:10,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-ffinger',name:'Fish Finger',emoji:'🐟',cat:'Fish',price:159,recipe:[{id:'r-ffinger',qty:4,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]},{id:'m-ffry',name:'Fish Fry',emoji:'🐟',cat:'Fish',price:149,recipe:[{id:'r-ffry',qty:1,unit:'Piece'},{id:'r-onion',qty:10,unit:'GM'},{id:'r-cucumb',qty:10,unit:'GM'},{id:'r-ketchup',qty:10,unit:'GM'},{id:'r-chaat',qty:2,unit:'GM'}]}];
+
+// Menu: merge defaults with any custom items from localStorage
+let customMenu=JSON.parse(localStorage.getItem('ceb_menu')||'[]');
+let MENU=[...DEFAULT_MENU,...customMenu];
 
 // ═══════════════════════════════════════════════════════
 // STATE — localStorage + Cloud sync
@@ -634,6 +808,7 @@ function save(){
   localStorage.setItem('ceb_done',JSON.stringify(done));
   localStorage.setItem('ceb_exp',JSON.stringify(expenses));
   localStorage.setItem('ceb_hist',JSON.stringify(hist));
+  localStorage.setItem('ceb_menu',JSON.stringify(customMenu));
   // Debounced auto-sync to cloud
   if(gasUrl){clearTimeout(syncTimer);syncTimer=setTimeout(()=>pushToCloudSilent(),3000);}
 }
@@ -680,7 +855,7 @@ async function pushToCloud(){
   setSyncBar('syncing');toast('⬆️ Pushing to cloud…','');
   try{
     const r=await fetch(gasUrl,{method:'POST',headers:{'Content-Type':'text/plain'},
-      body:JSON.stringify({action:'syncAll',data:{raw_materials:raw,orders:orders,completed:done,expenses:expenses,history:hist.slice(0,100)}})});
+      body:JSON.stringify({action:'syncAll',data:{raw_materials:raw,orders:orders,completed:done,expenses:expenses,history:hist.slice(0,100),custom_menu:customMenu}})});
     const d=await r.json();
     if(d.status==='ok'){setSyncBar('ok');updateSyncBadge('cloud');toast('☁️ Data pushed to Google Sheets!','green');}
     else{setSyncBar('err');toast('❌ '+d.message,'red');}
@@ -692,7 +867,7 @@ async function pushToCloudSilent(){
   setSyncBar('syncing');
   try{
     const r=await fetch(gasUrl,{method:'POST',headers:{'Content-Type':'text/plain'},
-      body:JSON.stringify({action:'syncAll',data:{raw_materials:raw,orders:orders,completed:done,expenses:expenses,history:hist.slice(0,100)}})});
+      body:JSON.stringify({action:'syncAll',data:{raw_materials:raw,orders:orders,completed:done,expenses:expenses,history:hist.slice(0,100),custom_menu:customMenu}})});
     const d=await r.json();
     if(d.status==='ok'){setSyncBar('ok');updateSyncBadge('cloud');}
     else{setSyncBar('err');}
@@ -711,6 +886,7 @@ async function pullFromCloud(){
       if(d.data.completed)done=d.data.completed.map(o=>{o.total=Number(o.total)||0;if(typeof o.items==='string')o.items=JSON.parse(o.items);return o;});
       if(d.data.expenses)expenses=d.data.expenses.map(e=>{e.amt=Number(e.amt)||0;return e;});
       if(d.data.history)hist=d.data.history;
+      if(d.data.custom_menu&&d.data.custom_menu.length){customMenu=d.data.custom_menu;MENU=[...DEFAULT_MENU,...customMenu]}
       save();refresh();
       setSyncBar('ok');updateSyncBadge('cloud');toast('☁️ Data pulled from Google Sheets!','green');
     }else{setSyncBar('err');toast('❌ No data found in cloud','red');}
@@ -740,10 +916,85 @@ function switchPage(name,btn){curPg=name;document.querySelectorAll('.page').forE
 
 // ORDERS
 function setOF(btn){ordF=btn.dataset.f;document.querySelectorAll('#ordTabs .tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');renderOrders()}
-function renderOrders(){const open=orders.filter(o=>o.status!=='completed');document.getElementById('cnt-open').textContent=open.length;document.getElementById('cnt-all').textContent=orders.length;const tables=['T1','T2','T3','T4','T5','T6','T7','T8','Parcel'];document.getElementById('tblGrid').innerHTML=tables.map(t=>{const o=open.find(x=>x.table===t);const lbl=t==='Parcel'?'Parcel':'Table '+t.replace('T','');if(o)return`<div class="tcell occ" onclick="expandOrd('${o.id}')"><div class="tbdg">OPEN</div><div class="tnum">${t==='Parcel'?'📦':t.replace('T','')}</div><div class="tlbl">${lbl}</div><div class="tamt">₹${o.total}</div></div>`;return`<div class="tcell" onclick="openNewOrderForTable('${t}')"><div class="tnum" style="color:var(--bdf);font-size:16px">＋</div><div class="tlbl">${lbl}</div><div class="tamt" style="color:var(--bdf)">Empty</div></div>`}).join('');const show=ordF==='open'?open:orders;const el=document.getElementById('ordCards');if(!show.length){el.innerHTML=`<div class="empty"><div class="ei">🛎️</div><div class="et">No ${ordF==='open'?'open ':''}orders</div><div class="es">Tap a table or + to start</div></div>`;return}el.innerHTML=show.map(o=>`<div class="ocard"><div class="ocard-hd" onclick="toggleOrd('${o.id}')"><div class="ocard-tbl">${o.tableLabel} <span>${o.time}</span></div><div style="display:flex;align-items:center;gap:9px"><span class="ocard-tot">₹${o.total}</span><span style="color:var(--txf);font-size:11px" id="chev-${o.id}">▼</span></div></div><div id="obody-${o.id}" style="display:none"><div class="ocard-body">${o.items.map(oi=>`<div class="ocard-row"><div style="font-size:17px;width:22px;text-align:center">${oi.emoji}</div><div class="ocard-nm">${oi.name}</div><div class="ocard-qty">×${oi.qty}</div><div class="ocard-px">₹${oi.price*oi.qty}</div></div>`).join('')}</div>${o.status!=='completed'?`<div class="ocard-foot"><button class="btn-done" onclick="markDone('${o.id}')">✓ Complete & Deduct Stock</button><button class="btn-cxl" onclick="cancelOrd('${o.id}')">✕</button></div>`:`<div style="padding:8px 14px 12px;font-size:12px;color:var(--green);font-weight:700">✅ Completed ${o.cTime||''}</div>`}</div></div>`).join('')}
+function renderOrders(){const open=orders.filter(o=>o.status!=='completed');document.getElementById('cnt-open').textContent=open.length;document.getElementById('cnt-all').textContent=orders.length;const left=['T1','T2','T3','T4'],right=['T5','T6','T7'];function cellHtml(t){const o=open.find(x=>x.table===t);const lbl='Table '+t.replace('T','');if(o)return`<div class="tcell occ" onclick="expandOrd('${o.id}')"><div class="tbdg">OPEN</div><div class="tnum">${t.replace('T','')}</div><div class="tlbl">${lbl}</div><div class="tamt">₹${o.total}</div></div>`;return`<div class="tcell" onclick="openNewOrderForTable('${t}')"><div class="tnum" style="color:var(--bdf);font-size:16px">＋</div><div class="tlbl">${lbl}</div><div class="tamt" style="color:var(--bdf)">Empty</div></div>`}const po=open.find(x=>x.table==='Parcel');const parcelHtml=po?`<div class="tcell-parcel occ" onclick="expandOrd('${po.id}')"><div class="tbdg">OPEN</div><div style="display:flex;align-items:center;gap:10px"><span style="font-size:28px">📦</span><div><div class="tlbl" style="font-size:13px;letter-spacing:0">Parcel / Takeaway</div><div class="tamt" style="margin-top:2px">₹${po.total}</div></div></div></div>`:`<div class="tcell-parcel" onclick="openNewOrderForTable('Parcel')"><div style="display:flex;align-items:center;gap:10px"><span style="font-size:28px">📦</span><div><div class="tlbl" style="font-size:13px;letter-spacing:0;color:var(--txs)">Parcel / Takeaway</div><div class="tamt" style="margin-top:2px;color:var(--bdf)">Tap to create</div></div></div></div>`;document.getElementById('tblGrid').innerHTML=`<div class="tgrid-col">${left.map(cellHtml).join('')}</div><div class="tgrid-col">${right.map(cellHtml).join('')}</div><div style="grid-column:1/-1">${parcelHtml}</div>`;const show=ordF==='open'?open:orders;const el=document.getElementById('ordCards');if(!show.length){el.innerHTML=`<div class="empty"><div class="ei">🛎️</div><div class="et">No ${ordF==='open'?'open ':''}orders</div><div class="es">Tap a table or + to start</div></div>`;return}el.innerHTML=show.map(o=>`<div class="ocard"><div class="ocard-hd" onclick="toggleOrd('${o.id}')"><div class="ocard-tbl">${o.tableLabel} <span>${o.time}</span></div><div style="display:flex;align-items:center;gap:9px"><span class="ocard-tot">₹${o.total}</span><span style="color:var(--txf);font-size:11px" id="chev-${o.id}">▼</span></div></div><div id="obody-${o.id}" style="display:none"><div class="ocard-body">${o.items.map(oi=>`<div class="ocard-row"><div style="font-size:17px;width:22px;text-align:center">${oi.emoji}</div><div class="ocard-nm">${oi.name}</div><div class="ocard-qty">×${oi.qty}</div><div class="ocard-px">₹${oi.price*oi.qty}</div></div>`).join('')}</div>${o.status!=='completed'?`<div class="ocard-foot"><button class="btn-done" onclick="markDone('${o.id}')">✓ Complete & Deduct Stock</button><button class="btn-cxl" onclick="cancelOrd('${o.id}')">✕</button></div>`:`<div style="padding:8px 14px 12px;font-size:12px;color:var(--green);font-weight:700">✅ Completed ${o.cTime||''}</div>`}</div></div>`).join('')}
 function toggleOrd(id){const b=document.getElementById('obody-'+id),c=document.getElementById('chev-'+id);const open=b.style.display==='block';b.style.display=open?'none':'block';if(c)c.textContent=open?'▼':'▲'}
 function expandOrd(id){toggleOrd(id)}
-function markDone(id){const o=orders.find(x=>x.id===id);if(!o)return;deduct(o);o.status='completed';o.cDate=today();o.cTime=ts();done.unshift(o);orders=orders.filter(x=>x.id!==id);save();refresh();toast(`✅ ${o.tableLabel} completed! ₹${o.total}`,'green')}
+let pendingPayId=null;
+function markDone(id){
+  const o=orders.find(x=>x.id===id);if(!o)return;
+  pendingPayId=id;
+  document.getElementById('payTotal').textContent='₹'+o.total;
+  document.getElementById('payTableLabel').textContent=o.tableLabel+' · '+o.items.map(i=>i.name+'×'+i.qty).join(', ');
+  document.getElementById('moPayTitle').textContent='💳 '+o.tableLabel;
+  showPayStep1();
+  document.getElementById('moPay').classList.add('open');
+}
+function showPayStep1(){
+  document.getElementById('payStep1').style.display='block';
+  document.getElementById('payStep2').style.display='none';
+}
+function selectPayMethod(method){
+  const o=orders.find(x=>x.id===pendingPayId);if(!o)return;
+  if(method==='online'){
+    finalizeOrder(o,'online');
+  }else{
+    document.getElementById('payStep1').style.display='none';
+    document.getElementById('payStep2').style.display='block';
+    document.getElementById('cashReceived').value='';
+    document.getElementById('changeBox').style.display='none';
+    document.getElementById('cashCompleteBtn').style.opacity='.4';
+    document.getElementById('cashCompleteBtn').style.pointerEvents='none';
+    // Generate quick cash buttons (round up to nearest 10,50,100,500)
+    const tot=o.total;
+    const quicks=[...new Set([tot,Math.ceil(tot/10)*10,Math.ceil(tot/50)*50,Math.ceil(tot/100)*100,500,1000].filter(v=>v>=tot))].sort((a,b)=>a-b).slice(0,5);
+    document.getElementById('quickCashBtns').innerHTML=quicks.map(v=>`<button class="quick-cash-btn" onclick="setCash(${v})">₹${v}</button>`).join('');
+    setTimeout(()=>document.getElementById('cashReceived').focus(),300);
+  }
+}
+function setCash(val){
+  document.getElementById('cashReceived').value=val;
+  calcChange();
+}
+function calcChange(){
+  const o=orders.find(x=>x.id===pendingPayId);if(!o)return;
+  const received=parseFloat(document.getElementById('cashReceived').value)||0;
+  const change=received-o.total;
+  const box=document.getElementById('changeBox');
+  const btn=document.getElementById('cashCompleteBtn');
+  if(received<=0){box.style.display='none';btn.style.opacity='.4';btn.style.pointerEvents='none';return}
+  box.style.display='block';
+  if(change>=0){
+    box.style.background='var(--greenl)';
+    document.getElementById('changeLbl').textContent='Return Change';
+    document.getElementById('changeLbl').style.color='var(--green)';
+    document.getElementById('changeAmt').textContent='₹'+change;
+    document.getElementById('changeAmt').style.color='var(--green)';
+    btn.style.opacity='1';btn.style.pointerEvents='all';
+  }else{
+    box.style.background='var(--redl)';
+    document.getElementById('changeLbl').textContent='Amount Short';
+    document.getElementById('changeLbl').style.color='var(--red)';
+    document.getElementById('changeAmt').textContent='₹'+Math.abs(change);
+    document.getElementById('changeAmt').style.color='var(--red)';
+    btn.style.opacity='.4';btn.style.pointerEvents='none';
+  }
+}
+function completeCashOrder(){
+  const o=orders.find(x=>x.id===pendingPayId);if(!o)return;
+  const received=parseFloat(document.getElementById('cashReceived').value)||0;
+  finalizeOrder(o,'cash',received);
+}
+function finalizeOrder(o,method,cashReceived){
+  deduct(o);
+  o.status='completed';o.cDate=today();o.cTime=ts();o.payMethod=method;
+  if(cashReceived)o.cashReceived=cashReceived;
+  done.unshift(o);
+  orders=orders.filter(x=>x.id!==o.id);
+  pendingPayId=null;
+  save();refresh();closeMo('moPay');
+  const methodIcon=method==='online'?'📱':'💵';
+  toast(`✅ ${o.tableLabel} · ₹${o.total} · ${methodIcon} ${method==='online'?'Online':'Cash'}`,'green');
+}
 function cancelOrd(id){const o=orders.find(x=>x.id===id);if(!confirm(`Cancel order for ${o.tableLabel}?`))return;orders=orders.filter(x=>x.id!==id);save();refresh();toast('🗑 Order cancelled','red')}
 function openNewOrderForTable(t){cart={};document.getElementById('tblSel').value=t;buildMenuModal();document.getElementById('moOrd').classList.add('open')}
 function openNewOrder(){cart={};document.getElementById('tblSel').value='';buildMenuModal();document.getElementById('moOrd').classList.add('open')}
@@ -812,11 +1063,209 @@ function renderRestock(){const need=raw.filter(r=>status(r)!=='ok');const el=doc
 function doRestock(id){const r=raw.find(x=>x.id===id);const n=parseInt(document.getElementById('ri-'+id).value)||0;if(n<=0){toast('Enter number of packs','red');return}r.stock+=n*r.packSize;save();refresh();toast(`✅ +${n} pack${n>1?'s':''} of ${r.name}`,'green')}
 
 // ANALYTICS
-function renderAnalytics(){const td=done.filter(o=>o.cDate===today());const tdRev=td.reduce((s,o)=>s+o.total,0);const allRev=done.reduce((s,o)=>s+o.total,0);const tdExp=expenses.filter(e=>e.date===today()).reduce((s,e)=>s+e.amt,0);const allExp=expenses.reduce((s,e)=>s+e.amt,0);
-document.getElementById('salesSum').innerHTML=`<div class="acard-ttl">Sales Overview</div><div class="arow"><span class="al">Today's Orders</span><span class="av">${td.length}</span></div><div class="arow big"><span class="al">Today's Revenue</span><span class="av">₹${tdRev}</span></div><div class="arow"><span class="al">All-time Revenue</span><span class="av" style="color:var(--blue)">₹${allRev}</span></div><div class="arow"><span class="al">Total Completed</span><span class="av">${done.length}</span></div>`;
-document.getElementById('expenseSum').innerHTML=`<div class="acard-ttl">Expenses & Profit</div><div class="arow"><span class="al">Today's Expenses</span><span class="av" style="color:var(--red)">₹${tdExp}</span></div><div class="arow"><span class="al">All-time Expenses</span><span class="av" style="color:var(--red)">₹${allExp}</span></div><div class="arow big"><span class="al">Today's Profit</span><span class="av" style="color:${(tdRev-tdExp)>=0?'var(--green)':'var(--red)'}">₹${tdRev-tdExp}</span></div><div class="arow"><span class="al">All-time Profit</span><span class="av" style="color:${(allRev-allExp)>=0?'var(--green)':'var(--red)'}">₹${allRev-allExp}</span></div>`;
-const sl=document.getElementById('salesList');if(!done.length)sl.innerHTML=`<div class="empty"><div class="ei">💰</div><div class="et">No completed orders yet</div></div>`;else sl.innerHTML=done.slice(0,20).map(o=>`<div class="hi"><div style="font-size:17px">✅</div><div class="hi-tx"><div class="hi-main">${o.tableLabel}</div><div class="hi-sub">${o.items.map(i=>`${i.name}×${i.qty}`).join(', ')}</div><div class="hi-sub">${o.cTime||o.time}</div></div><div class="hi-amt">₹${o.total}</div></div>`).join('');
-const el=document.getElementById('expensesList');if(!expenses.length)el.innerHTML=`<div class="empty"><div class="ei">📝</div><div class="et">No expenses yet</div></div>`;else el.innerHTML=expenses.slice(0,20).map(e=>`<div class="ecard"><div style="font-size:18px">💸</div><div style="flex:1"><div class="ecard-nm">${e.desc}</div><div class="ecard-sub">${e.time}</div></div><div class="ecard-amt">−₹${e.amt}</div><button class="ecard-del" onclick="delExpense('${e.id}')">🗑</button></div>`).join('')}
+let anPeriod='today';
+function setAnPeriod(p,btn){anPeriod=p;document.querySelectorAll('.an-fbtn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderAnalytics()}
+
+function getFilteredData(){
+  const now=new Date();
+  const todayStr=today();
+  let fDone=done,fExp=expenses;
+  if(anPeriod==='today'){
+    fDone=done.filter(o=>o.cDate===todayStr);
+    fExp=expenses.filter(e=>e.date===todayStr);
+  }else if(anPeriod==='7d'){
+    const d7=new Date(now);d7.setDate(d7.getDate()-7);
+    fDone=done.filter(o=>{try{const parts=o.cDate.split('/');const d=new Date(parts[2],parts[1]-1,parts[0]);return d>=d7}catch(e){return false}});
+    fExp=expenses.filter(e=>{try{const parts=e.date.split('/');const d=new Date(parts[2],parts[1]-1,parts[0]);return d>=d7}catch(e){return false}});
+  }else if(anPeriod==='30d'){
+    const d30=new Date(now);d30.setDate(d30.getDate()-30);
+    fDone=done.filter(o=>{try{const parts=o.cDate.split('/');const d=new Date(parts[2],parts[1]-1,parts[0]);return d>=d30}catch(e){return false}});
+    fExp=expenses.filter(e=>{try{const parts=e.date.split('/');const d=new Date(parts[2],parts[1]-1,parts[0]);return d>=d30}catch(e){return false}});
+  }
+  // 'all' returns everything
+  return{fDone,fExp};
+}
+
+function renderAnalytics(){
+  // Date filter tabs
+  document.getElementById('anFilter').innerHTML=['today','7d','30d','all'].map(p=>{
+    const labels={today:'Today','7d':'7 Days','30d':'30 Days',all:'All Time'};
+    return `<button class="an-fbtn ${p===anPeriod?'active':''}" onclick="setAnPeriod('${p}',this)">${labels[p]}</button>`;
+  }).join('');
+
+  const{fDone,fExp}=getFilteredData();
+  const rev=fDone.reduce((s,o)=>s+o.total,0);
+  const expTotal=fExp.reduce((s,e)=>s+e.amt,0);
+  const profit=rev-expTotal;
+  const avgOrder=fDone.length?Math.round(rev/fDone.length):0;
+  const onlineRev=fDone.filter(o=>o.payMethod==='online').reduce((s,o)=>s+o.total,0);
+  const cashRev=fDone.filter(o=>o.payMethod!=='online').reduce((s,o)=>s+o.total,0);
+
+  // Estimate material cost from recipes
+  let materialCost=0;
+  fDone.forEach(o=>{o.items.forEach(oi=>{
+    const mi=MENU.find(m=>m.id===oi.menuId);if(!mi)return;
+    mi.recipe.forEach(r=>{const rm=raw.find(x=>x.id===r.id)||DEFAULT_RAW.find(x=>x.id===r.id);if(!rm)return;
+      const unitCost=rm.costPerPack/rm.packSize;materialCost+=unitCost*r.qty*oi.qty;});
+  })});
+  materialCost=Math.round(materialCost);
+
+  // Gross margin
+  const grossMargin=rev>0?Math.round((rev-materialCost)/rev*100):0;
+
+  // KPIs — Hero Total Sales + supporting KPIs
+  document.getElementById('anKpis').innerHTML=`
+    <div class="kpi wide" style="background:var(--forest);border-color:var(--forest);position:relative;overflow:hidden">
+      <div style="position:absolute;top:-20px;right:-10px;font-size:80px;opacity:.06">💰</div>
+      <div class="kpi-label" style="color:rgba(255,255,255,.5)">Total Sales</div>
+      <div class="kpi-val" style="color:#fff;font-size:32px">₹${rev.toLocaleString('en-IN')}</div>
+      <div style="display:flex;gap:12px;margin-top:8px">
+        <div style="font-size:11px;color:rgba(255,255,255,.55);font-weight:600">${fDone.length} orders</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.55);font-weight:600">Avg ₹${avgOrder}/order</div>
+      </div>
+    </div>
+    <div class="kpi"><div class="kpi-icon">🏭</div><div class="kpi-label">Material Cost</div><div class="kpi-val" style="color:var(--amber)">₹${materialCost.toLocaleString('en-IN')}</div><div class="kpi-sub">${rev>0?grossMargin+'% margin':'—'}</div></div>
+    <div class="kpi"><div class="kpi-icon">${profit>=0?'📈':'📉'}</div><div class="kpi-label">Net Profit</div><div class="kpi-val" style="color:${profit>=0?'var(--green)':'var(--red)'}">₹${profit.toLocaleString('en-IN')}</div><div class="kpi-sub">Sales − Costs − Expenses</div></div>
+    <div class="kpi"><div class="kpi-icon">💸</div><div class="kpi-label">Expenses</div><div class="kpi-val" style="color:var(--red)">₹${expTotal.toLocaleString('en-IN')}</div><div class="kpi-sub">${fExp.length} entries</div></div>
+    <div class="kpi"><div class="kpi-icon">🧾</div><div class="kpi-label">Avg Order</div><div class="kpi-val">₹${avgOrder}</div><div class="kpi-sub">${fDone.length} orders</div></div>`;
+
+  // Daily trend — 3 metrics: Sales, Material Cost, Profit
+  const dailyMap={};
+  done.forEach(o=>{
+    if(!dailyMap[o.cDate])dailyMap[o.cDate]={rev:0,matCost:0,expCost:0,orders:0};
+    dailyMap[o.cDate].rev+=o.total;dailyMap[o.cDate].orders++;
+    o.items.forEach(oi=>{const mi=MENU.find(m=>m.id===oi.menuId);if(!mi)return;
+      mi.recipe.forEach(r=>{const rm=raw.find(x=>x.id===r.id)||DEFAULT_RAW.find(x=>x.id===r.id);if(!rm)return;
+        dailyMap[o.cDate].matCost+=(rm.costPerPack/rm.packSize)*r.qty*oi.qty})})});
+  expenses.forEach(e=>{if(!dailyMap[e.date])dailyMap[e.date]={rev:0,matCost:0,expCost:0,orders:0};dailyMap[e.date].expCost+=e.amt});
+  const days=Object.keys(dailyMap).sort((a,b)=>{const pa=a.split('/'),pb=b.split('/');return new Date(pa[2],pa[1]-1,pa[0])-new Date(pb[2],pb[1]-1,pb[0])}).slice(-7);
+  // Compute profit per day
+  days.forEach(d=>{const v=dailyMap[d];v.profit=v.rev-Math.round(v.matCost)-v.expCost;v.matCost=Math.round(v.matCost)});
+  const maxTrend=Math.max(...days.map(d=>Math.max(dailyMap[d].rev,dailyMap[d].matCost,Math.abs(dailyMap[d].profit))),1);
+
+  if(days.length>=1){
+    document.getElementById('anTrend').innerHTML=`<div class="acard-ttl">📈 Daily: Sales vs Material Cost vs Profit</div>
+      <div class="trend-chart">${days.map(d=>{
+        const v=dailyMap[d];
+        const rh=Math.max(3,Math.round(v.rev/maxTrend*72));
+        const ch=Math.max(3,Math.round(v.matCost/maxTrend*72));
+        const ph=Math.max(3,Math.round(Math.abs(v.profit)/maxTrend*72));
+        const pc=v.profit>=0?'var(--green)':'var(--red)';
+        const parts=d.split('/');const dlbl=parts[0]+'/'+parts[1];
+        return `<div class="trend-col">
+          <div class="trend-val">₹${v.rev}</div>
+          <div class="trend-bar-wrap">
+            <div class="trend-bar" style="height:${rh}px;background:var(--blue);border-radius:3px 3px 0 0"></div>
+            <div class="trend-bar" style="height:${ch}px;background:var(--amber);border-radius:3px 3px 0 0"></div>
+            <div class="trend-bar" style="height:${ph}px;background:${pc};border-radius:3px 3px 0 0"></div>
+          </div>
+          <div class="trend-lbl">${dlbl}</div>
+        </div>`;
+      }).join('')}</div>
+      <div class="trend-legend">
+        <div class="trend-leg-item"><div class="trend-leg-dot" style="background:var(--blue)"></div>Sales</div>
+        <div class="trend-leg-item"><div class="trend-leg-dot" style="background:var(--amber)"></div>Material</div>
+        <div class="trend-leg-item"><div class="trend-leg-dot" style="background:var(--green)"></div>Profit</div>
+      </div>
+      <div style="margin-top:12px;border-top:1.5px solid var(--bd);padding-top:10px">
+        <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:0;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--txf);padding:0 0 6px">
+          <div>Date</div><div style="text-align:right">Sales</div><div style="text-align:right">Material</div><div style="text-align:right">Profit</div>
+        </div>
+        ${days.slice().reverse().map(d=>{
+          const v=dailyMap[d];const parts=d.split('/');
+          return `<div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:0;font-size:12px;padding:6px 0;border-top:1px solid var(--bd)">
+            <div style="font-weight:700;color:var(--txs)">${parts[0]}/${parts[1]}</div>
+            <div style="text-align:right;font-weight:800;font-family:var(--f2);color:var(--blue)">₹${v.rev}</div>
+            <div style="text-align:right;font-weight:700;font-family:var(--f2);color:var(--amber)">₹${v.matCost}</div>
+            <div style="text-align:right;font-weight:800;font-family:var(--f2);color:${v.profit>=0?'var(--green)':'var(--red)'}">₹${v.profit}</div>
+          </div>`}).join('')}
+      </div>`;
+  }else{document.getElementById('anTrend').innerHTML=`<div class="acard-ttl">📈 Daily Trend</div><div style="text-align:center;padding:20px;color:var(--txf);font-size:12px">Complete some orders to see daily trends</div>`}
+
+  // Item performance (top sellers) with per-item cost & profit
+  const itemMap={};
+  fDone.forEach(o=>{o.items.forEach(oi=>{
+    if(!itemMap[oi.menuId])itemMap[oi.menuId]={id:oi.menuId,name:oi.name,emoji:oi.emoji,qty:0,rev:0,cost:0};
+    itemMap[oi.menuId].qty+=oi.qty;itemMap[oi.menuId].rev+=oi.price*oi.qty;
+    // Calc material cost for this item
+    const mi=MENU.find(m=>m.id===oi.menuId);if(mi){mi.recipe.forEach(r=>{const rm=raw.find(x=>x.id===r.id)||DEFAULT_RAW.find(x=>x.id===r.id);if(rm)itemMap[oi.menuId].cost+=(rm.costPerPack/rm.packSize)*r.qty*oi.qty})}
+  })});
+  Object.values(itemMap).forEach(it=>{it.cost=Math.round(it.cost);it.profit=it.rev-it.cost;it.margin=it.rev>0?Math.round(it.profit/it.rev*100):0});
+  const topItems=Object.values(itemMap).sort((a,b)=>b.rev-a.rev);
+  const maxRev=topItems.length?topItems[0].rev:1;
+
+  document.getElementById('anItems').innerHTML=`<div class="acard-ttl">🏆 Item Performance — Revenue & Profitability</div>${
+    topItems.length?topItems.map((it,i)=>`<div class="bar-row" style="padding:8px 0;align-items:flex-start">
+      <div class="bar-rank" style="margin-top:2px">${i+1}</div>
+      <div class="bar-emoji" style="margin-top:1px">${it.emoji}</div>
+      <div class="bar-info" style="flex:1">
+        <div class="bar-name">${it.name}</div>
+        <div class="bar-stat">×${it.qty} sold · Cost ₹${it.cost} · Profit <span style="color:${it.profit>=0?'var(--green)':'var(--red)'}">₹${it.profit}</span> · ${it.margin}% margin</div>
+        <div style="display:flex;gap:3px;margin-top:4px;height:5px;border-radius:3px;overflow:hidden;background:var(--bg)">
+          <div style="height:100%;border-radius:3px;background:var(--green);width:${Math.round(it.profit/Math.max(it.rev,1)*100)}%"></div>
+          <div style="height:100%;border-radius:3px;background:var(--amber);width:${Math.round(it.cost/Math.max(it.rev,1)*100)}%"></div>
+        </div>
+      </div>
+      <div style="text-align:right;flex-shrink:0;min-width:50px">
+        <div class="bar-val" style="min-width:auto">₹${it.rev}</div>
+        <div style="font-size:9px;color:var(--txf);font-weight:600;margin-top:1px">revenue</div>
+      </div>
+    </div>`).join(''):'<div style="text-align:center;padding:20px;color:var(--txf);font-size:12px">No orders in this period</div>'}`;
+
+  // Frequently ordered together
+  const pairMap={};
+  fDone.forEach(o=>{const ids=o.items.map(i=>i.menuId).sort();
+    for(let i=0;i<ids.length;i++){for(let j=i+1;j<ids.length;j++){const key=ids[i]+'|'+ids[j];if(!pairMap[key])pairMap[key]={a:o.items.find(x=>x.menuId===ids[i]),b:o.items.find(x=>x.menuId===ids[j]),count:0};pairMap[key].count++}}});
+  const topPairs=Object.values(pairMap).filter(p=>p.count>=2).sort((a,b)=>b.count-a.count).slice(0,6);
+
+  document.getElementById('anPairs').innerHTML=`<div class="acard-ttl">🔗 Frequently Ordered Together</div>${
+    topPairs.length?`<div style="padding:4px 0">${topPairs.map(p=>`<div class="pair-chip">${p.a.emoji} ${p.a.name} + ${p.b.emoji} ${p.b.name} <span class="pc-count">×${p.count}</span></div>`).join('')}</div>`
+    :'<div style="text-align:center;padding:20px;color:var(--txf);font-size:12px">Need more multi-item orders to find patterns</div>'}`;
+
+  // Category breakdown
+  const catMap={};
+  fDone.forEach(o=>{o.items.forEach(oi=>{
+    const mi=MENU.find(m=>m.id===oi.menuId);const cat=mi?mi.cat:'Other';
+    if(!catMap[cat])catMap[cat]={rev:0,qty:0};catMap[cat].rev+=oi.price*oi.qty;catMap[cat].qty+=oi.qty;
+  })});
+  const topCats=Object.entries(catMap).sort((a,b)=>b[1].rev-a[1].rev);
+  const maxCatRev=topCats.length?topCats[0][1].rev:1;
+  const catEmojis={Beverages:'☕',Breakfast:'🍳',Snacks:'🍜',Frozen:'🍟',Chicken:'🍗',Fish:'🐟'};
+
+  document.getElementById('anCats').innerHTML=`<div class="acard-ttl">📦 Category Breakdown</div>${
+    topCats.length?topCats.map(([cat,d])=>`<div class="bar-row">
+      <div class="bar-emoji">${catEmojis[cat]||'📦'}</div>
+      <div class="bar-info"><div class="bar-name">${cat}</div><div class="bar-stat">${d.qty} items · ₹${d.rev}</div></div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.round(d.rev/maxCatRev*100)}%;background:var(--forest)"></div></div>
+      <div class="bar-val">₹${d.rev}</div>
+    </div>`).join(''):'<div style="text-align:center;padding:20px;color:var(--txf);font-size:12px">No data</div>'}`;
+
+  // Payment split
+  const onlineCount=fDone.filter(o=>o.payMethod==='online').length;
+  const cashCount=fDone.length-onlineCount;
+  const onlinePct=fDone.length?Math.round(onlineRev/Math.max(rev,1)*100):0;
+  const cashPct=100-onlinePct;
+
+  document.getElementById('anPay').innerHTML=`<div class="acard-ttl">💳 Payment Split</div>
+    ${rev>0?`<div class="hbar-wrap">
+      ${onlinePct>0?`<div class="hbar-seg" style="width:${onlinePct}%;background:var(--blue)"><span>📱 ₹${onlineRev}</span></div>`:''}
+      ${cashPct>0?`<div class="hbar-seg" style="width:${cashPct}%;background:var(--copper)"><span>💵 ₹${cashRev}</span></div>`:''}
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:6px">
+      <div style="font-size:11px;color:var(--txf);font-weight:600">📱 Online: ${onlineCount} orders (${onlinePct}%)</div>
+      <div style="font-size:11px;color:var(--txf);font-weight:600">💵 Cash: ${cashCount} orders (${cashPct}%)</div>
+    </div>`:'<div style="text-align:center;padding:20px;color:var(--txf);font-size:12px">No orders yet</div>'}`;
+
+  // Recent orders
+  const sl=document.getElementById('salesList');
+  if(!fDone.length)sl.innerHTML=`<div class="empty"><div class="ei">💰</div><div class="et">No completed orders</div></div>`;
+  else sl.innerHTML=fDone.slice(0,15).map(o=>`<div class="hi"><div style="font-size:17px">${o.payMethod==='online'?'📱':'💵'}</div><div class="hi-tx"><div class="hi-main">${o.tableLabel}</div><div class="hi-sub">${o.items.map(i=>`${i.name}×${i.qty}`).join(', ')}</div><div class="hi-sub">${o.cTime||o.time} · ${o.payMethod==='online'?'Online':'Cash'}</div></div><div class="hi-amt">₹${o.total}</div></div>`).join('');
+
+  // Expenses
+  const el=document.getElementById('expensesList');
+  if(!fExp.length)el.innerHTML=`<div class="empty"><div class="ei">📝</div><div class="et">No expenses</div></div>`;
+  else el.innerHTML=fExp.slice(0,15).map(e=>`<div class="ecard"><div style="font-size:18px">💸</div><div style="flex:1"><div class="ecard-nm">${e.desc}</div><div class="ecard-sub">${e.time}</div></div><div class="ecard-amt">−₹${e.amt}</div><button class="ecard-del" onclick="delExpense('${e.id}')">🗑</button></div>`).join('');
+}
 
 // EXPENSES
 function addExpense(){const desc=document.getElementById('exp-desc').value.trim();const amt=parseFloat(document.getElementById('exp-amt').value)||0;if(!desc||!amt){toast('Enter description & amount','red');return}expenses.unshift({id:uid(),desc,amt,date:today(),time:ts()});document.getElementById('exp-desc').value='';document.getElementById('exp-amt').value='';save();refresh();toast(`💸 Expense added: ₹${amt}`,'red')}
@@ -828,7 +1277,117 @@ function adjB(id,d){if(!bulkD[id])bulkD[id]=0;const r=raw.find(x=>x.id===id);bul
 function applyBulk(){let n=0;for(const[id,qty]of Object.entries(bulkD)){if(qty>0){const r=raw.find(x=>x.id===id);if(!r)continue;r.stock=Math.max(0,r.stock-qty);n++}}if(!n){toast('No changes made','red');return}save();refresh();closeMo('moBulk');toast(`✅ Updated ${n} item${n>1?'s':''}`,'green')}
 
 // MANAGE
-function renderManage(){document.getElementById('manageTtl').textContent=`Raw Materials (${raw.length})`;document.getElementById('manageList').innerHTML=raw.map(r=>`<div class="mitem"><div class="mrow"><div style="font-size:24px">${r.emoji}</div><div class="minfo"><div class="mname">${r.name}</div><div class="msub">${r.cat} · ${dispStock(r)} · ₹${r.costPerPack}/pk</div></div><div class="macts"><button class="abtn aedit" onclick="openEdit('${r.id}')">✏️</button><button class="abtn adel" onclick="delItem('${r.id}')">🗑</button></div></div></div>`).join('');document.getElementById('gasUrl').value=gasUrl}
+function renderManage(){
+  // Menu items list
+  document.getElementById('menuTtl').textContent=`Menu Items (${MENU.length})`;
+  document.getElementById('menuList').innerHTML=MENU.map(mi=>{
+    const isCustom=customMenu.find(c=>c.id===mi.id);
+    return `<div class="menu-mitem">
+      <div class="mm-em">${mi.emoji}</div>
+      <div class="mm-info"><div class="mm-nm">${mi.name}</div><div class="mm-sub">${mi.cat} · ${mi.recipe.length} ingredients${isCustom?' · <span style="color:var(--copper)">Custom</span>':''}</div></div>
+      <div class="mm-px">₹${mi.price}</div>
+      ${isCustom?`<div class="macts"><button class="abtn aedit" onclick="openEditMenu('${mi.id}')">✏️</button><button class="abtn adel" onclick="delMenu('${mi.id}')">🗑</button></div>`:`<button class="abtn aedit" onclick="openEditMenu('${mi.id}')">✏️</button>`}
+    </div>`;
+  }).join('');
+  // Raw materials list
+  document.getElementById('manageTtl').textContent=`Raw Materials (${raw.length})`;
+  document.getElementById('manageList').innerHTML=raw.map(r=>`<div class="mitem"><div class="mrow"><div style="font-size:24px">${r.emoji}</div><div class="minfo"><div class="mname">${r.name}</div><div class="msub">${r.cat} · ${dispStock(r)} · ₹${r.costPerPack}/pk</div></div><div class="macts"><button class="abtn aedit" onclick="openEdit('${r.id}')">✏️</button><button class="abtn adel" onclick="delItem('${r.id}')">🗑</button></div></div></div>`).join('');
+  document.getElementById('gasUrl').value=gasUrl;
+}
+
+// ═══════════════════════════════════════════════════════
+// 🍽️ MENU ITEM MANAGEMENT
+// ═══════════════════════════════════════════════════════
+let menuEditId=null,menuSelEmo='🍽️',recipeLines=[];
+const menuEmojis=['🍵','☕','🥤','🍜','🍳','🥚','🍞','🍟','🍗','🐟','🍰','🧁','🥪','🌯','🍕','🍔','🥗','🫕','🟡','📦'];
+
+function buildMenuEG(sel){
+  document.getElementById('menuEmojiGrid').innerHTML=menuEmojis.map(e=>`<button class="eo ${e===sel?'sel':''}" onclick="pickMenuEmo('${e}',this)">${e}</button>`).join('');
+}
+function pickMenuEmo(e,el){menuSelEmo=e;document.querySelectorAll('#menuEmojiGrid .eo').forEach(x=>x.classList.remove('sel'));el.classList.add('sel')}
+
+function renderRecipeLines(){
+  const rawOpts=raw.map(r=>`<option value="${r.id}">${r.emoji} ${r.name} (${dispUnit(r)})</option>`).join('');
+  document.getElementById('mi-recipe-list').innerHTML=recipeLines.map((rl,i)=>{
+    const rm=raw.find(x=>x.id===rl.id);
+    const unitLbl=rm?dispUnit(rm):'';
+    return `<div class="rcp-line">
+      <select onchange="recipeLines[${i}].id=this.value;renderRecipeLines()"><option value="">Select…</option>${rawOpts}</select>
+      <input type="number" value="${rl.qty||''}" placeholder="qty" onchange="recipeLines[${i}].qty=parseFloat(this.value)||0">
+      <span class="rcp-unit">${unitLbl}</span>
+      <button class="rcp-del" onclick="recipeLines.splice(${i},1);renderRecipeLines()">✕</button>
+    </div>`;
+  }).join('');
+  // Set selected values
+  setTimeout(()=>{
+    const selects=document.querySelectorAll('#mi-recipe-list select');
+    recipeLines.forEach((rl,i)=>{if(selects[i])selects[i].value=rl.id||''});
+  },10);
+}
+function addRecipeLine(){recipeLines.push({id:'',qty:0});renderRecipeLines()}
+
+function openAddMenu(){
+  menuEditId=null;menuSelEmo='🍽️';recipeLines=[];
+  document.getElementById('moMenuTitle').textContent='🍽️ Add Menu Item';
+  document.getElementById('mi-name').value='';
+  document.getElementById('mi-price').value='';
+  document.getElementById('mi-cat').value='Beverages';
+  buildMenuEG('🍽️');renderRecipeLines();
+  document.getElementById('moMenu').classList.add('open');
+}
+
+function openEditMenu(id){
+  const mi=MENU.find(x=>x.id===id);if(!mi)return;
+  menuEditId=id;menuSelEmo=mi.emoji;
+  document.getElementById('moMenuTitle').textContent='✏️ Edit '+mi.name;
+  document.getElementById('mi-name').value=mi.name;
+  document.getElementById('mi-price').value=mi.price;
+  document.getElementById('mi-cat').value=mi.cat;
+  recipeLines=mi.recipe.map(r=>({id:r.id,qty:r.qty}));
+  buildMenuEG(mi.emoji);renderRecipeLines();
+  document.getElementById('moMenu').classList.add('open');
+}
+
+function saveMenuItem(){
+  const name=document.getElementById('mi-name').value.trim();
+  const price=parseFloat(document.getElementById('mi-price').value);
+  if(!name){toast('Name is required','red');return}
+  if(!price||price<=0){toast('Enter a valid price','red');return}
+  const cat=document.getElementById('mi-cat').value;
+  const recipe=recipeLines.filter(r=>r.id&&r.qty>0).map(r=>({id:r.id,qty:r.qty,unit:(raw.find(x=>x.id===r.id)||{}).trackBy||'GM'}));
+  
+  if(menuEditId){
+    // Check if editing a default item or custom
+    const defIdx=DEFAULT_MENU.findIndex(x=>x.id===menuEditId);
+    const custIdx=customMenu.findIndex(x=>x.id===menuEditId);
+    const updated={id:menuEditId,name,emoji:menuSelEmo,cat,price,recipe};
+    
+    if(custIdx>=0){
+      customMenu[custIdx]=updated;
+    }else{
+      // Editing a default item — save as custom override
+      customMenu.push(updated);
+    }
+    // Update MENU array
+    const mIdx=MENU.findIndex(x=>x.id===menuEditId);
+    if(mIdx>=0)MENU[mIdx]=updated;
+    toast('✅ '+name+' updated!','green');
+  }else{
+    const newItem={id:'m-'+uid(),name,emoji:menuSelEmo,cat,price,recipe};
+    customMenu.push(newItem);
+    MENU.push(newItem);
+    toast('✅ '+name+' added to menu!','green');
+  }
+  save();refresh();closeMo('moMenu');
+}
+
+function delMenu(id){
+  const mi=MENU.find(x=>x.id===id);
+  if(!confirm(`Remove "${mi.name}" from menu?`))return;
+  customMenu=customMenu.filter(x=>x.id!==id);
+  MENU.splice(MENU.findIndex(x=>x.id===id),1);
+  save();refresh();toast('🗑 Removed from menu','red');
+}
 const EMOJIS=['☕','🍵','🥛','🥚','🍳','🍞','🐟','🍗','🍟','❄️','🫕','🧆','🧄','🌶️','🧅','🫙','🍜','🥒','🧈','🧂','🍅','🟡','🌽','🥬'];
 function buildEG(sel){document.getElementById('emojiGrid').innerHTML=EMOJIS.map(e=>`<div class="eo ${e===sel?'sel':''}" onclick="pickE('${e}',this)">${e}</div>`).join('')}
 function pickE(e,el){selEmo=e;document.querySelectorAll('.eo').forEach(x=>x.classList.remove('sel'));el.classList.add('sel')}
@@ -839,8 +1398,8 @@ function saveItem(){const name=document.getElementById('fi-name').value.trim();i
 function delItem(id){const r=raw.find(x=>x.id===id);if(!confirm(`Delete "${r.name}"?`))return;raw=raw.filter(x=>x.id!==id);save();refresh();toast('🗑 Removed','red')}
 
 // DATA MANAGEMENT
-function exportData(){const data={raw,orders,done,expenses,hist,exportedAt:new Date().toISOString()};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`cha-er-bari-backup-${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(url);toast('📥 Data exported!','green')}
-function importData(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=function(e){try{const data=JSON.parse(e.target.result);if(data.raw)raw=data.raw;if(data.orders)orders=data.orders;if(data.done)done=data.done;if(data.expenses)expenses=data.expenses;if(data.hist)hist=data.hist;save();refresh();toast('📤 Data imported!','green')}catch(err){toast('Error: Invalid file','red')}};reader.readAsText(file);event.target.value=''}
+function exportData(){const data={raw,orders,done,expenses,hist,customMenu,exportedAt:new Date().toISOString()};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`cha-er-bari-backup-${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(url);toast('📥 Data exported!','green')}
+function importData(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=function(e){try{const data=JSON.parse(e.target.result);if(data.raw)raw=data.raw;if(data.orders)orders=data.orders;if(data.done)done=data.done;if(data.expenses)expenses=data.expenses;if(data.hist)hist=data.hist;if(data.customMenu){customMenu=data.customMenu;MENU=[...DEFAULT_MENU,...customMenu]}save();refresh();toast('📤 Data imported!','green')}catch(err){toast('Error: Invalid file','red')}};reader.readAsText(file);event.target.value=''}
 function resetStock(){if(!confirm('Reset all raw materials to default?'))return;raw=JSON.parse(JSON.stringify(DEFAULT_RAW));save();refresh();toast('🔄 Stock reset','green')}
 function clearAllData(){if(!confirm('⚠️ DELETE all data?'))return;if(!confirm('Really?'))return;raw=JSON.parse(JSON.stringify(DEFAULT_RAW));orders=[];done=[];expenses=[];hist=[];save();refresh();toast('🗑 All data cleared','red')}
 
